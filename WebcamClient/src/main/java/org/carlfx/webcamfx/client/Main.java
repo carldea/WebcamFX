@@ -1,16 +1,25 @@
+/*
+* Copyright (c) 2013. Carl Dea
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 package org.carlfx.webcamfx.client;
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
-import javafx.animation.TranslateTransitionBuilder;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -18,7 +27,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -30,11 +38,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * Created with IntelliJ IDEA.
- * User: cdea
- * Date: 4/25/13
- * Time: 10:07 PM
- * To change this template use File | Settings | File Templates.
+ * A simple JavaFX client using sockets to communicate with the server
+ * to queue up jpeg images
  */
 public class Main extends Application{
     BlockingQueue<byte[]> IMAGES = new LinkedBlockingQueue<>();
@@ -168,50 +173,6 @@ public class Main extends Application{
 
     }
 
-
-    private Text buildText(String str) {
-        Blend blend = new Blend();
-        blend.setMode(BlendMode.MULTIPLY);
-
-        DropShadow ds = new DropShadow();
-        ds.setColor(Color.rgb(254, 235, 66, 0.3));
-        ds.setOffsetX(5);
-        ds.setOffsetY(5);
-        ds.setRadius(5);
-        ds.setSpread(0.2);
-
-        blend.setBottomInput(ds);
-
-        DropShadow ds1 = new DropShadow();
-        ds1.setColor(Color.web("#f13a00"));
-        ds1.setRadius(20);
-        ds1.setSpread(0.2);
-
-        Blend blend2 = new Blend();
-        blend2.setMode(BlendMode.MULTIPLY);
-
-        InnerShadow is = new InnerShadow();
-        is.setColor(Color.web("#feeb42"));
-        is.setRadius(9);
-        is.setChoke(0.8);
-        blend2.setBottomInput(is);
-
-        InnerShadow is1 = new InnerShadow();
-        is1.setColor(Color.web("#f13a00"));
-        is1.setRadius(5);
-        is1.setChoke(0.4);
-        blend2.setTopInput(is1);
-
-        Blend blend1 = new Blend();
-        blend1.setMode(BlendMode.MULTIPLY);
-        blend1.setBottomInput(ds1);
-        blend1.setTopInput(blend2);
-
-        blend.setTopInput(blend1);
-        Text text = new Text(str);
-        text.setEffect(blend);
-        return text;
-    }
     private Text buildText2(String str) {
 
         Text t = new Text();
@@ -222,15 +183,6 @@ public class Main extends Application{
         t.setFill(Color.RED);
         t.setX(10);
         t.setY(20);
-//        TranslateTransition tt = TranslateTransitionBuilder.create()
-//                .node(t)
-//                .duration(Duration.seconds(2))
-//                .fromX(10)
-//                .toX(70)
-//                .autoReverse(true)
-//                .cycleCount(TranslateTransition.INDEFINITE)
-//                .build();
-//        tt.playFromStart();
         return t;
     }
     public static Image deserializeImage(byte[] imageData) throws IOException {
