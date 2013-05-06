@@ -6,10 +6,6 @@ Currently the server side portion is written using Java 8 (32 bit Windows jvm) a
 The client can be Java 7 or 8 using JavaFX 2.0 and above. Maven will build the necessary bits to run the demo. Client and Server is
 created using the preview release of Java 8 (http://jdk8.java.net/download.html).
 
-ToDo:
-There are lots of optimizations that need to be done.
-Better ways to send data to client viewers.
-Abstract the server piece more for ip cameras and other streaming protocols.
 
 Prerequisites
 -------------------
@@ -81,3 +77,13 @@ Intellij IDE users
   A combo box (drop down) regarding Language Level. Make sure this is selecting "Java 8 Lambdas, type annotations etc."
   It'll ask to restart the IDE. Sometimes this gets confused because the maven pom when changes the IDE will detect and change the language settings from
   time to time.
+
+TODO
+---------------------
+* There are lots of optimizations that need to be done.
+    * Limit blocking queues
+    * Possible thread starvation
+* Better ways to send data to client viewers. PTP protocols, MJPEG, and RTSP.
+* Abstract the server piece more for ip cameras and other streaming protocols.
+* Use Gradle
+* Gradle to create projects for IntelliJ, Netbeans and Eclipse
