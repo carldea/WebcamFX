@@ -22,11 +22,11 @@ Quick Start
 2. Install Java Media Framework (32 bit) http://www.oracle.com/technetwork/java/javase/download-142937.html
 3. Ensure the dlls are installed in JMFHOME/lib directory via unchecking a check box during install see thread: https://forums.oracle.com/forums/thread.jspa?messageID=10191973
 4. Install Maven
-5. git clone https://github.com/carldea/WebcamFX.git
+5. git clone git@github.com:carldea/WebcamFX.git
 6. cd to WebcamFX/WebcamSvr
-7. mvn clean assembler:assembler
+7. mvn clean assembly:assembly
 8. cd to WebcamFX/WebcamClient
-9. mvn clean assembler:assembler
+9. mvn clean assembly:assembly
 10. cd to WebcamFX/WebcamSvr/target
 11. server_start.bat or double click on the bat file.
 12. cd to WebcamFX/WebcamClient/target
