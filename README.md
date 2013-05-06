@@ -70,7 +70,7 @@ Building with Maven
     * cd WebcamFX/WebcamClient
     * mvn clean assembly:assembly
     * cd target
-    * java -jar double click webcamclient-1.0-SNAPSHOT-jar-with-dependencies.jar
+    * java -jar webcamclient-1.0-SNAPSHOT-jar-with-dependencies.jar
     * or in File Explorer double click webcamclient-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 Intellij IDE users
